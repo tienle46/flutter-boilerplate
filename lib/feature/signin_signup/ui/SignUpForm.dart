@@ -43,7 +43,7 @@ class _SignUpFormState extends State<SignUpForm> {
         if (state is SignUpSuccess) {
           Scaffold.of(context).showSnackBar(
             SnackBar(
-              content: Text(S.of(context).signupSuccess),
+              content: Text(S.of(context).signup_success),
               backgroundColor: Theme.of(context).accentColor,
             ),
           );
@@ -59,7 +59,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     const SizedBox(height: 150),
-                    Text(S.of(context).signUp,
+                    Text(S.of(context).sign_up,
                         style: TextStyle(
                             color: Colors.grey[800],
                             fontWeight: FontWeight.bold,
@@ -69,17 +69,17 @@ class _SignUpFormState extends State<SignUpForm> {
                         children: [
                           TextFormField(
                               decoration: InputDecoration(
-                                  labelText: S.of(context).emailHint),
+                                  labelText: S.of(context).email_hint),
                               controller: _emailController,
                               keyboardType: TextInputType.emailAddress),
                           TextFormField(
                             decoration: InputDecoration(
-                                labelText: S.of(context).userNameHint),
+                                labelText: S.of(context).user_name_hint),
                             controller: _usernameController,
                           ),
                           TextFormField(
                             decoration: InputDecoration(
-                                labelText: S.of(context).passwordHint),
+                                labelText: S.of(context).password_hint),
                             controller: _passwordController,
                             obscureText: true,
                           ),
@@ -90,7 +90,7 @@ class _SignUpFormState extends State<SignUpForm> {
                                 _signUpButton(state),
                                 const SizedBox(height: 30),
                                 Text(
-                                  S.of(context).alreadyUser,
+                                  S.of(context).already_user,
                                   textAlign: TextAlign.center,
                                 ),
                                 _signInButton(),
@@ -117,7 +117,7 @@ class _SignUpFormState extends State<SignUpForm> {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text(S.of(context).signIn),
+          child: Text(S.of(context).sign_in),
         ));
   }
 
@@ -127,7 +127,7 @@ class _SignUpFormState extends State<SignUpForm> {
         child: RaisedButton(
           color: Colors.white,
           onPressed: state is! SignInLoading ? _onSignUpButtonPressed : null,
-          child: Text(S.of(context).signUp),
+          child: Text(S.of(context).sign_up),
         ));
   }
 }

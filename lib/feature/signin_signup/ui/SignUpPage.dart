@@ -18,7 +18,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).signIn),
+        title: Text(S.of(context).sign_in),
       ),
       body: BlocProvider(
         create: (context) {

@@ -44,7 +44,7 @@ class _SignInFormState extends State<SignInForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     const SizedBox(height: 150),
-                    Text(S.of(context).signIn,
+                    Text(S.of(context).sign_in,
                         style: TextStyle(
                             color: Colors.grey[800],
                             fontWeight: FontWeight.bold,
@@ -54,12 +54,12 @@ class _SignInFormState extends State<SignInForm> {
                         children: [
                           TextFormField(
                             decoration: InputDecoration(
-                                labelText: S.of(context).userNameHint),
+                                labelText: S.of(context).user_name_hint),
                             controller: _usernameController,
                           ),
                           TextFormField(
                             decoration: InputDecoration(
-                                labelText: S.of(context).passwordHint),
+                                labelText: S.of(context).password_hint),
                             controller: _passwordController,
                             obscureText: true,
                           ),
@@ -70,7 +70,7 @@ class _SignInFormState extends State<SignInForm> {
                                 _signInButton(state),
                                 const SizedBox(height: 30),
                                 Text(
-                                  S.of(context).newUser,
+                                  S.of(context).new_user,
                                   textAlign: TextAlign.center,
                                 ),
                                 _signUpButton(),
@@ -95,7 +95,7 @@ class _SignInFormState extends State<SignInForm> {
         child: RaisedButton(
           color: Colors.white,
           onPressed: state is! SignInLoading ? _onLoginButtonPressed : null,
-          child: Text(S.of(context).signIn),
+          child: Text(S.of(context).sign_in),
         ));
   }
 
@@ -108,7 +108,7 @@ class _SignInFormState extends State<SignInForm> {
             Navigator.pushNamed(context, Routes.signUp,
                 arguments: RepositoryProvider.of<AuthRepository>(context));
           },
-          child: Text(S.of(context).signUp),
+          child: Text(S.of(context).sign_up),
         ));
   }
 }
