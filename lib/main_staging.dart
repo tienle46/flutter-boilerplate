@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -12,6 +13,6 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runZonedGuarded(() {
-    runApp(App(env: EnvValue.test));
+    runApp(App(env: EnvValue.staging));
   }, (error, stackTrace) async {});
 }

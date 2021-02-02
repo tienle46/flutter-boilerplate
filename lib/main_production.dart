@@ -12,6 +12,6 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runZonedGuarded(() {
-    runApp(App(env: EnvValue.test));
+    runApp(App(env: EnvValue.production));
   }, (error, stackTrace) async {});
 }
