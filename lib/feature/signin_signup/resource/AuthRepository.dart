@@ -2,6 +2,7 @@ import 'package:boilerplate_flutter/common/constant/Env.dart';
 import 'package:boilerplate_flutter/common/http/ApiProvider.dart';
 import 'package:boilerplate_flutter/common/http/Response.dart';
 import 'package:boilerplate_flutter/common/utils/InternetCheck.dart';
+import 'package:boilerplate_flutter/feature/signin_signup/model/SignInResponse.dart';
 import 'package:meta/meta.dart';
 
 import 'AuthApiProvider.dart';
@@ -20,16 +21,17 @@ class AuthRepository {
         AuthApiProvider(baseUrl: env.baseUrl, apiProvider: apiProvider);
   }
 
-  Future<DataResponse<String>> signIn(String email, String password) async {
+  Future<DataResponse<SignInResponse>> signIn(
+      String email, String password) async {
     final response = await authApiProvider.signIn(email, password);
     if (response == null) {
       return DataResponse.connectivityError();
     }
 
-    if (!response['error']) {
-      final String token = response["token"];
-      apiProvider.setToken(token);
-      return DataResponse.success(token);
+    if (response['error'] == null) {
+      SignInResponse signInResponse =
+          SignInResponse.fromJson(response["responseData"]);
+      return DataResponse.success(signInResponse);
     } else {
       return DataResponse.error("Error");
     }

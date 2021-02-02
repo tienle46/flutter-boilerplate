@@ -12,10 +12,10 @@ class AuthApiProvider {
 
   ApiProvider apiProvider;
 
-  Future<Map<String, dynamic>> signIn(String email, String password) async {
+  Future<Map<String, dynamic>> signIn(String username, String password) async {
     try {
-      final String data = json.encode({'email': email, 'password': password});
-      return await apiProvider.post('$baseUrl/login', data);
+      final String data = json.encode({'username': username, 'password': password});
+      return await apiProvider.post('$baseUrl/card/app/login/customer', data);
     } on Error catch (e) {
       throw Exception('Failed to load post ' + e.toString());
     }
@@ -26,7 +26,7 @@ class AuthApiProvider {
     try {
       final String data =
           json.encode({'name': name, 'email': email, 'password': password});
-      return await apiProvider.post('$baseUrl/signup', data);
+      return await apiProvider.post('$baseUrl/register', data);
     } on Error catch (e) {
       throw Exception('Failed to load post ' + e.toString());
     }

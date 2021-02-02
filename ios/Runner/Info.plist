@@ -23,10 +23,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
-	<key>CFBundleLocalizations</key>
-	<array>
-    	<string>en</string>
-	</array>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>

@@ -5,8 +5,8 @@ class Env {
 }
 
 mixin EnvValue {
-  static final Env test = Env('https://test.erp.vssolutions.io/api/');
-  static final Env prepro = Env('https://test.erp.vssolutions.io/api/');
-  static final Env staging = Env('https://test.erp.vssolutions.io/api/');
-  static final Env production = Env('https://test.erp.vssolutions.io/api/');
+  static final Env test = Env('https://test.haven.fruitful.io/api');
+  static final Env prepro = Env('https://test.haven.fruitful.io/api');
+  static final Env staging = Env('https://test.haven.fruitful.io/api');
+  static final Env production = Env('https://test.haven.fruitful.io/api');
 }

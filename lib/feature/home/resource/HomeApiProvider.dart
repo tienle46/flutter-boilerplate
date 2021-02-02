@@ -11,7 +11,4 @@ class HomeApiProvider {
 
   final String baseUrl;
 
-  Future<Map<String, dynamic>> fetchBooks() {
-    return apiProvider.get('$baseUrl/books');
-  }
 }

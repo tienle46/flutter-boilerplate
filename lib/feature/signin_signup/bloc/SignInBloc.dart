@@ -31,7 +31,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           yield const SignInFailure(error: "");
         }
         if (response.status == Status.Success) {
-          authenticationBloc.add(LoggedIn(token: response.data));
+          authenticationBloc
+              .add(LoggedIn(token: response.data.getAccessToken()));
           yield SignInSuccess();
         } else {
           yield SignInFailure(error: response.message);

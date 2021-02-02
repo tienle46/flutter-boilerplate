@@ -1,28 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
-
 import 'CustomException.dart';
 
 class ApiProvider {
-  String token = '';
 
-  void setToken(String token) {
-    this.token = token;
-  }
-
-  Future<Map<String, dynamic>> post(String url, dynamic body,
-      {String token = ''}) async {
+  Future<Map<String, dynamic>> post(String url, dynamic body, {dynamic headers = const {
+    'content-type': 'application/json'
+  }}) async {
     dynamic responseJson;
     try {
       final dynamic response =
-          await http.post(Uri.encodeFull(url), body: body, headers: {
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': 'Bearer ' + token
-      });
+          await http.post(Uri.encodeFull(url), body: body, headers: headers);
       responseJson = _response(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -30,14 +20,12 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<dynamic> get(String url, {String token = '', dynamic query}) async {
+  Future<dynamic> get(String url, {dynamic headers = const {
+    'content-type': 'application/json'
+  }}) async {
     dynamic responseJson;
     try {
-      final dynamic response = await http.get(Uri.encodeFull(url), headers: {
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': 'Bearer ' + token
-      });
+      final dynamic response = await http.get(Uri.encodeFull(url), headers: headers);
       responseJson = _response(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -49,7 +37,6 @@ class ApiProvider {
     switch (response.statusCode) {
       case 200:
         final dynamic responseJson = json.decode(response.body.toString());
-        print(responseJson);
         return responseJson;
       case 400:
         throw BadRequestException(response.body.toString());
@@ -60,8 +47,7 @@ class ApiProvider {
       case 500:
 
       default:
-        throw FetchDataException(
-            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+        throw Exception(response.body.toString());
     }
   }
 }
