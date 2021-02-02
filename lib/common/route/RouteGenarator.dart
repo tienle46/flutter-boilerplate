@@ -36,7 +36,7 @@ class RouteGenerator {
         return MaterialPageRoute<dynamic>(
             builder: (_) => Scaffold(
                 appBar: AppBar(
-                  title: const Text('Books'),
+                  title: const Text('BlueBottle'),
                 ),
                 body: HomePage()));
       default:
